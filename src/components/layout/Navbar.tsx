@@ -37,9 +37,9 @@ export function Navbar() {
             <Image 
               src="/logo.png" 
               alt="StayOps.ai Logo" 
-              width={220} 
-              height={60} 
-              className="h-10 w-auto object-contain"
+              width={400} 
+              height={100} 
+              className="h-16 w-auto object-contain"
               priority
             />
           </Link>

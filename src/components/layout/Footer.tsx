@@ -14,9 +14,9 @@ export function Footer() {
               <Image 
                 src="/logo.png" 
                 alt="StayOps.ai Logo" 
-                width={180} 
-                height={50} 
-                className="h-10 w-auto object-contain"
+                width={300} 
+                height={80} 
+                className="h-14 w-auto object-contain"
               />
             </Link>
             <p className="text-sm text-muted mb-6">
