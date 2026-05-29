@@ -1,7 +1,8 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { Menu, X, Hexagon } from "lucide-react";
+import Image from "next/image";
+import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 
 export function Navbar() {
@@ -33,10 +34,14 @@ export function Navbar() {
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 group">
-            <Hexagon className="h-8 w-8 text-gold-500 group-hover:text-gold-400 transition-colors" />
-            <span className="text-2xl font-bold tracking-tighter text-white">
-              StayOps<span className="text-gold-500">.ai</span>
-            </span>
+            <Image 
+              src="/logo.png" 
+              alt="StayOps.ai Logo" 
+              width={220} 
+              height={60} 
+              className="h-10 w-auto object-contain"
+              priority
+            />
           </Link>
 
           {/* Desktop Navigation */}

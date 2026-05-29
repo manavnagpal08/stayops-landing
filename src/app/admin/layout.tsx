@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { 
   Hexagon, 
@@ -63,11 +64,14 @@ export default function AdminLayout({
       {/* Sidebar */}
       <aside className="w-64 border-r border-white/10 bg-[#0a0a0a] flex flex-col hidden md:flex sticky top-0 h-screen">
         <div className="h-20 flex items-center px-6 border-b border-white/10">
-          <Link href="/" className="flex items-center gap-2 group">
-            <Hexagon className="h-6 w-6 text-gold-500 group-hover:text-gold-400" />
-            <span className="text-xl font-bold tracking-tighter text-white">
-              StayOps<span className="text-gold-500">.ai</span>
-            </span>
+          <Link href="/" className="inline-block">
+            <Image 
+              src="/logo.png" 
+              alt="StayOps.ai Logo" 
+              width={160} 
+              height={40} 
+              className="h-8 w-auto object-contain"
+            />
           </Link>
         </div>
         

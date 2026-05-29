@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
-import { Hexagon, Globe, MessageCircle, Mail } from "lucide-react";
+import Image from "next/image";
+import { Globe, MessageCircle, Mail } from "lucide-react";
 
 export function Footer() {
   return (
@@ -9,11 +10,14 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
           {/* Brand */}
           <div className="col-span-1 md:col-span-1">
-            <Link href="/" className="flex items-center gap-2 mb-4">
-              <Hexagon className="h-6 w-6 text-gold-500" />
-              <span className="text-xl font-bold tracking-tighter text-white">
-                StayOps<span className="text-gold-500">.ai</span>
-              </span>
+            <Link href="/" className="inline-block mb-6">
+              <Image 
+                src="/logo.png" 
+                alt="StayOps.ai Logo" 
+                width={180} 
+                height={50} 
+                className="h-10 w-auto object-contain"
+              />
             </Link>
             <p className="text-sm text-muted mb-6">
               Automate your business operations with 24/7 AI workforce solutions. 
