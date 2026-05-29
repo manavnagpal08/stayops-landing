@@ -1,20 +1,13 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
+import { MouseGlow } from "@/components/ui/MouseGlow";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "StayOps.ai - Build Your AI Workforce",
-  description: "Deploy AI agents for HR, sales, customer support, operations, and workflows — all from one powerful platform.",
+  title: "StayOps.ai | Unified Enterprise AI Ecosystem",
+  description: "Deploy Chat AI, Voice AI, and Video AI agents to completely automate your business operations.",
 };
 
 export default function RootLayout({
@@ -23,11 +16,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased dark`}
-    >
-      <body className="min-h-full flex flex-col overflow-x-hidden">
+    <html lang="en" className="dark">
+      <body className={`${inter.className} bg-[#050505] text-slate-50 min-h-screen flex flex-col antialiased selection:bg-gold-500/30`}>
+        <MouseGlow />
         {children}
       </body>
     </html>

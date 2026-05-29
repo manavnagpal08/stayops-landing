@@ -3,13 +3,14 @@ import React from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, Sparkles, MessageSquare, Mic, Video } from "lucide-react";
 import Link from "next/link";
+import { Particles } from "@/components/ui/Particles";
 
 const platforms = [
   {
     name: "Chat AI",
     icon: MessageSquare,
     color: "from-chat-500 to-chat-400",
-    glowColor: "group-hover:shadow-[0_0_30px_rgba(59,130,246,0.3)]",
+    glowColor: "group-hover:shadow-[0_0_40px_rgba(59,130,246,0.4)]",
     url: "https://chat.stayops.ai",
     description: "GPT/LLM conversations & support.",
   },
@@ -17,7 +18,7 @@ const platforms = [
     name: "Voice AI",
     icon: Mic,
     color: "from-voice-500 to-voice-400",
-    glowColor: "group-hover:shadow-[0_0_30px_rgba(249,115,22,0.3)]",
+    glowColor: "group-hover:shadow-[0_0_40px_rgba(249,115,22,0.4)]",
     url: "https://voice.stayops.ai",
     description: "Real-time AI phone calls & reception.",
   },
@@ -25,7 +26,7 @@ const platforms = [
     name: "Video AI",
     icon: Video,
     color: "from-video-500 to-video-400",
-    glowColor: "group-hover:shadow-[0_0_30px_rgba(139,92,246,0.3)]",
+    glowColor: "group-hover:shadow-[0_0_40px_rgba(139,92,246,0.4)]",
     url: "https://video.stayops.ai",
     description: "Lip-sync avatars & AI presenters.",
   },
@@ -34,8 +35,7 @@ const platforms = [
 export function Hero() {
   return (
     <section className="relative min-h-screen flex items-center justify-center pt-24 pb-12 overflow-hidden">
-      {/* Background Glow */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[600px] bg-gold-500/5 rounded-full blur-[150px] pointer-events-none" />
+      <Particles />
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
         <div className="text-center max-w-4xl mx-auto">
@@ -88,33 +88,43 @@ export function Hero() {
                     <motion.div 
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
-                      className={`group glass rounded-2xl p-8 border border-white/10 hover:border-white/20 transition-all duration-500 h-full flex flex-col items-center text-center relative overflow-hidden ${platform.glowColor} cursor-pointer`}
+                      className={`group relative rounded-2xl p-[1px] h-full overflow-hidden ${platform.glowColor} cursor-pointer`}
                     >
+                      {/* Animated Gradient Border Layer */}
+                      <div className="absolute inset-0 bg-white/10 group-hover:bg-white/20 transition-colors duration-500 rounded-2xl" />
+                      <div className="absolute inset-[-100%] opacity-0 group-hover:opacity-100 animate-[spin_4s_linear_infinite] transition-opacity duration-700" 
+                           style={{ background: `conic-gradient(from 0deg, transparent 0 280deg, var(--color-${platform.name.split(' ')[0].toLowerCase()}-500) 360deg)` }} 
+                      />
+                      
+                      {/* Inner Card Content */}
+                      <div className="relative glass bg-[#050505]/90 backdrop-blur-2xl rounded-2xl p-8 h-full flex flex-col items-center text-center z-10 transition-all duration-500">
                     
-                    {/* Background Gradient Hover Effect */}
-                    <div className={`absolute inset-0 opacity-0 group-hover:opacity-10 bg-gradient-to-br ${platform.color} transition-opacity duration-500`} />
-                    
-                    <div className="relative z-10">
-                      <div className="h-16 w-16 mx-auto rounded-2xl bg-[#111] flex items-center justify-center mb-6 border border-white/5 group-hover:scale-110 transition-transform duration-500">
-                        <platform.icon className={`h-8 w-8 text-transparent bg-clip-text bg-gradient-to-br ${platform.color}`} style={{ color: "currentColor" }} />
-                        {/* We need to apply the color to the icon properly, so we use absolute positioning for a colored icon */}
-                        <div className={`absolute inset-0 flex items-center justify-center text-transparent bg-clip-text bg-gradient-to-br ${platform.color}`}>
-                          <platform.icon className="h-8 w-8 stroke-[url(#gradient)]" />
+                        {/* Background Gradient Hover Effect */}
+                        <div className={`absolute inset-0 opacity-0 group-hover:opacity-10 bg-gradient-to-br ${platform.color} transition-opacity duration-500`} />
+                        
+                        <div className="relative z-10">
+                          <div className="h-16 w-16 mx-auto rounded-2xl bg-[#111] flex items-center justify-center mb-6 border border-white/5 group-hover:scale-110 transition-transform duration-500 group-hover:border-white/20">
+                            <platform.icon className={`h-8 w-8 text-transparent bg-clip-text bg-gradient-to-br ${platform.color}`} style={{ color: "currentColor" }} />
+                            {/* Colored Icon absolute positioned */}
+                            <div className={`absolute inset-0 flex items-center justify-center text-transparent bg-clip-text bg-gradient-to-br ${platform.color}`}>
+                              <platform.icon className="h-8 w-8 stroke-[url(#gradient)]" />
+                            </div>
+                            <svg width="0" height="0">
+                              <linearGradient id={`grad-${index}`} x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" className={`text-${platform.color.split(' ')[0].replace('from-', '')}`} stopColor="currentColor" />
+                                <stop offset="100%" className={`text-${platform.color.split(' ')[1].replace('to-', '')}`} stopColor="currentColor" />
+                              </linearGradient>
+                            </svg>
+                          </div>
+                          
+                          <h3 className="text-2xl font-bold text-white mb-2">{platform.name}</h3>
+                          <p className="text-muted mb-8">{platform.description}</p>
+                          
+                          <div className="mt-auto flex items-center justify-center gap-2 text-sm font-medium text-white group-hover:text-gold-400 transition-colors">
+                            Explore Platform <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                          </div>
                         </div>
-                        {/* SVG Gradient Definitions */}
-                        <svg width="0" height="0">
-                          <linearGradient id={`grad-${index}`} x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" className={`text-${platform.color.split(' ')[0].replace('from-', '')}`} stopColor="currentColor" />
-                            <stop offset="100%" className={`text-${platform.color.split(' ')[1].replace('to-', '')}`} stopColor="currentColor" />
-                          </linearGradient>
-                        </svg>
                       </div>
-                      
-                      <h3 className="text-2xl font-bold text-white mb-2">{platform.name}</h3>
-                      <p className="text-muted mb-8">{platform.description}</p>
-                      
-                      <div className="mt-auto flex items-center justify-center gap-2 text-sm font-medium text-white group-hover:text-gold-400 transition-colors">
-                        Explore Platform <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
                     </motion.div>
                   </Link>
                 </motion.div>
