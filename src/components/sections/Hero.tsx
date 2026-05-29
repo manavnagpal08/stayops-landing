@@ -79,8 +79,17 @@ export function Hero() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
               >
-                <Link href={platform.url} target="_blank" rel="noopener noreferrer" className="block h-full outline-none">
-                  <div className={`group glass rounded-2xl p-8 border border-white/10 hover:border-white/20 transition-all duration-500 h-full flex flex-col items-center text-center relative overflow-hidden ${platform.glowColor} cursor-pointer`}>
+                <motion.div
+                  animate={{ y: [0, -10, 0] }}
+                  transition={{ repeat: Infinity, duration: 5, ease: "easeInOut", delay: index * 0.2 }}
+                  className="h-full"
+                >
+                  <Link href={platform.url} target="_blank" rel="noopener noreferrer" className="block h-full outline-none">
+                    <motion.div 
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                      className={`group glass rounded-2xl p-8 border border-white/10 hover:border-white/20 transition-all duration-500 h-full flex flex-col items-center text-center relative overflow-hidden ${platform.glowColor} cursor-pointer`}
+                    >
                     
                     {/* Background Gradient Hover Effect */}
                     <div className={`absolute inset-0 opacity-0 group-hover:opacity-10 bg-gradient-to-br ${platform.color} transition-opacity duration-500`} />
@@ -106,10 +115,9 @@ export function Hero() {
                       
                       <div className="mt-auto flex items-center justify-center gap-2 text-sm font-medium text-white group-hover:text-gold-400 transition-colors">
                         Explore Platform <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                      </div>
-                    </div>
-                  </div>
-                </Link>
+                    </motion.div>
+                  </Link>
+                </motion.div>
               </motion.div>
             ))}
           </div>

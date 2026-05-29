@@ -159,10 +159,16 @@ export function PlatformShowcase() {
               </div>
 
               {/* Visual Mockup */}
-              <div className="flex-1 w-full perspective-1000">
-                <div 
-                  className={`glass rounded-3xl border border-white/10 p-2 ${platform.glowAccent} aspect-video relative overflow-hidden bg-[#050505]/80 backdrop-blur-3xl transform transition-transform duration-700 hover:rotate-y-2 hover:scale-105`}
+              <motion.div 
+                className="flex-1 w-full perspective-1000"
+                animate={{ y: [0, -10, 0] }}
+                transition={{ repeat: Infinity, duration: 6, ease: "easeInOut", delay: index * 0.5 }}
+              >
+                <motion.div 
+                  className={`glass rounded-3xl border border-white/10 p-2 ${platform.glowAccent} aspect-video relative overflow-hidden bg-[#050505]/80 backdrop-blur-3xl transform transition-transform duration-700`}
                   style={{ transformStyle: 'preserve-3d' }}
+                  whileHover={{ rotateY: 5, rotateX: 5, scale: 1.05 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
                 >
                   {/* Subtle Grid Background */}
                   <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.015)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.015)_1px,transparent_1px)] bg-[size:32px_32px] [mask-image:radial-gradient(ellipse_at_center,black_40%,transparent_80%)]" />
@@ -204,8 +210,8 @@ export function PlatformShowcase() {
                       </div>
                     </div>
                   </div>
-                </div>
-              </div>
+                </motion.div>
+              </motion.div>
             </motion.div>
           ))}
         </div>
