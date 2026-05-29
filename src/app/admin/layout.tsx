@@ -35,6 +35,7 @@ export default function AdminLayout({
       title: "Core",
       items: [
         { name: "Overview", href: "/admin", icon: LayoutDashboard },
+        { name: "CMS / Content", href: "/admin/cms", icon: LayoutDashboard },
         { name: "Billing & Subscriptions", href: "/admin/billing", icon: CreditCard },
         { name: "Team & Roles", href: "/admin/users", icon: Users },
       ]
