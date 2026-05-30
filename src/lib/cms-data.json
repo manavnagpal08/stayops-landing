@@ -1,0 +1,354 @@
+{
+  "hero": {
+    "badge": "The Unified Enterprise AI Ecosystem",
+    "titleLine1": "One Platform.",
+    "titleLine2": "Three Powerful AI Systems.",
+    "subtitle": "Deploy Chat AI, Voice AI, and Video AI agents from the StayOps.ai ecosystem to completely automate your business operations.",
+    "platforms": [
+      {
+        "name": "Chat AI",
+        "icon": "MessageSquare",
+        "color": "from-chat-500 to-chat-400",
+        "url": "https://chat.stayops.ai",
+        "description": "GPT/LLM conversations & support."
+      },
+      {
+        "name": "Voice AI",
+        "icon": "Mic",
+        "color": "from-voice-500 to-voice-400",
+        "url": "https://voice.stayops.ai",
+        "description": "Real-time AI phone calls & reception."
+      },
+      {
+        "name": "Video AI",
+        "icon": "Video",
+        "color": "from-video-500 to-video-400",
+        "url": "https://video.stayops.ai",
+        "description": "Lip-sync avatars & AI presenters."
+      }
+    ]
+  },
+  "platforms": {
+    "title": "Explore the Ecosystem",
+    "subtitle": "Three independent, high-performance AI platforms, built from the ground up to automate every aspect of your enterprise.",
+    "items": [
+      {
+        "id": "chat",
+        "name": "Chat AI Platform",
+        "url": "https://chat.stayops.ai",
+        "urlDisplay": "chat.stayops.ai",
+        "accent": "text-chat-400",
+        "bgAccent": "bg-chat-500",
+        "features": [
+          "AI Chatbot",
+          "GPT agents",
+          "CRM support",
+          "Knowledge AI",
+          "Customer support automation",
+          "Website embedding"
+        ],
+        "cta": "Open Chat Platform"
+      },
+      {
+        "id": "voice",
+        "name": "Voice AI Platform",
+        "url": "https://voice.stayops.ai",
+        "urlDisplay": "voice.stayops.ai",
+        "accent": "text-voice-400",
+        "bgAccent": "bg-voice-500",
+        "features": [
+          "AI voice calls",
+          "Outbound calling",
+          "Speech recognition",
+          "AI receptionist",
+          "Voice analytics",
+          "Real-time conversations"
+        ],
+        "cta": "Open Voice Platform"
+      },
+      {
+        "id": "video",
+        "name": "Video AI Platform",
+        "url": "https://video.stayops.ai",
+        "urlDisplay": "video.stayops.ai",
+        "accent": "text-video-400",
+        "bgAccent": "bg-video-500",
+        "features": [
+          "AI avatars",
+          "Video rendering",
+          "Lip sync AI",
+          "Video agents",
+          "Human-like presenters",
+          "Interactive AI video"
+        ],
+        "cta": "Open Video Platform"
+      }
+    ]
+  },
+  "features": {
+    "title": "Enterprise-Grade Features",
+    "subtitle": "Everything you need to build, deploy, and manage a secure AI workforce at scale.",
+    "items": [
+      {
+        "title": "AI Workflow Automation",
+        "icon": "Bot"
+      },
+      {
+        "title": "Voice AI Agents",
+        "icon": "MessageSquare"
+      },
+      {
+        "title": "Smart Analytics",
+        "icon": "BarChart"
+      },
+      {
+        "title": "Multi-user Dashboard",
+        "icon": "Users2"
+      },
+      {
+        "title": "Real-time Monitoring",
+        "icon": "Activity"
+      },
+      {
+        "title": "CRM Integrations",
+        "icon": "Database"
+      },
+      {
+        "title": "WhatsApp Automation",
+        "icon": "MessageCircle"
+      },
+      {
+        "title": "API Access",
+        "icon": "Key"
+      },
+      {
+        "title": "Secure Cloud Hosting",
+        "icon": "Cloud"
+      },
+      {
+        "title": "Custom AI Agents",
+        "icon": "Cpu"
+      },
+      {
+        "title": "Role-based Access",
+        "icon": "ShieldCheck"
+      },
+      {
+        "title": "Notifications & Alerts",
+        "icon": "BellRing"
+      }
+    ]
+  },
+  "pricing": {
+    "chat": {
+      "accent": "chat",
+      "plans": [
+        {
+          "name": "Starter Chat",
+          "description": "Perfect for small teams needing basic AI support.",
+          "price": "$49",
+          "features": [
+            "1 AI Chatbot",
+            "Up to 5,000 messages/mo",
+            "Basic Knowledge Base",
+            "Email Support"
+          ],
+          "highlighted": false
+        },
+        {
+          "name": "Business Chat",
+          "description": "Advanced GPT workflows for scaling businesses.",
+          "price": "$149",
+          "features": [
+            "5 AI Chatbots",
+            "Unlimited messages",
+            "CRM Integrations",
+            "Priority Support",
+            "Custom Workflows"
+          ],
+          "highlighted": true
+        },
+        {
+          "name": "Enterprise Chat",
+          "description": "Dedicated infrastructure for large-scale deployments.",
+          "price": "Custom",
+          "features": [
+            "Unlimited Chatbots",
+            "Dedicated Account Manager",
+            "On-premise deployment options",
+            "SLA Guarantee"
+          ],
+          "highlighted": false
+        }
+      ]
+    },
+    "voice": {
+      "accent": "voice",
+      "plans": [
+        {
+          "name": "Voice Basic",
+          "description": "Get started with simple inbound AI reception.",
+          "price": "$99",
+          "features": [
+            "1 AI Receptionist",
+            "500 minutes included",
+            "$0.10 per extra minute",
+            "Basic Voice Cloning"
+          ],
+          "highlighted": false
+        },
+        {
+          "name": "Voice Pro",
+          "description": "Outbound campaigns and advanced call analytics.",
+          "price": "$299",
+          "features": [
+            "5 Concurrent Calls",
+            "2,000 minutes included",
+            "$0.08 per extra minute",
+            "Premium Voice Cloning",
+            "Call Analytics"
+          ],
+          "highlighted": true
+        },
+        {
+          "name": "Voice Enterprise",
+          "description": "High-volume call centers and complex integrations.",
+          "price": "Custom",
+          "features": [
+            "Unlimited Concurrent Calls",
+            "Custom Volume Pricing",
+            "API Access",
+            "Dedicated Infrastructure"
+          ],
+          "highlighted": false
+        }
+      ]
+    },
+    "video": {
+      "accent": "video",
+      "plans": [
+        {
+          "name": "Video Starter",
+          "description": "Generate basic AI videos and presentations.",
+          "price": "$199",
+          "features": [
+            "3 Standard Avatars",
+            "60 minutes rendering/mo",
+            "720p Export",
+            "Basic Lip Sync"
+          ],
+          "highlighted": false
+        },
+        {
+          "name": "Video Studio",
+          "description": "Professional video generation with custom avatars.",
+          "price": "$499",
+          "features": [
+            "Custom Avatar Generation",
+            "300 minutes rendering/mo",
+            "1080p Export",
+            "Advanced Lip Sync processing",
+            "Fast GPU Rendering"
+          ],
+          "highlighted": true
+        },
+        {
+          "name": "Video Enterprise",
+          "description": "Real-time interactive video agents and API.",
+          "price": "Custom",
+          "features": [
+            "Interactive Streaming Avatars",
+            "Dedicated GPU Cluster",
+            "4K Export",
+            "Real-time Latency <500ms"
+          ],
+          "highlighted": false
+        }
+      ]
+    }
+  },
+  "useCases": {
+    "title": "Built for Every Industry",
+    "subtitle": "Whether you are in real estate, healthcare, or logistics, our AI workforce adapts to your specific operational needs.",
+    "items": [
+      {
+        "title": "HR & Recruitment",
+        "description": "Automate sourcing, screening, and initial candidate interviews.",
+        "icon": "UserPlus"
+      },
+      {
+        "title": "Customer Support",
+        "description": "Resolve tier-1 and tier-2 tickets instantly without human intervention.",
+        "icon": "HeartHandshake"
+      },
+      {
+        "title": "Sales Automation",
+        "description": "Qualify leads and book meetings directly into your calendar.",
+        "icon": "Phone"
+      },
+      {
+        "title": "Real Estate",
+        "description": "Answer property queries and schedule viewings 24/7.",
+        "icon": "Building2"
+      },
+      {
+        "title": "Healthcare",
+        "description": "Manage patient appointments and basic triage inquiries.",
+        "icon": "Stethoscope"
+      },
+      {
+        "title": "Logistics",
+        "description": "Automate tracking updates and vendor communications.",
+        "icon": "Truck"
+      },
+      {
+        "title": "Education",
+        "description": "Student enrollment assistance and course query resolution.",
+        "icon": "GraduationCap"
+      },
+      {
+        "title": "Manufacturing",
+        "description": "Supply chain alerts and predictive maintenance scheduling.",
+        "icon": "Factory"
+      }
+    ]
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "subtitle": "Everything you need to know about the product and billing.",
+    "items": [
+      {
+        "question": "What is StayOps.ai?",
+        "answer": "StayOps.ai is an enterprise platform that allows you to deploy and manage a 24/7 AI workforce. Our AI agents can handle tasks ranging from customer support and HR automation to outbound sales calling."
+      },
+      {
+        "question": "How do AI agents work?",
+        "answer": "Our AI agents use state-of-the-art Large Language Models combined with workflow automation. They are trained on your specific business knowledge base and connected to your existing tools to perform tasks autonomously."
+      },
+      {
+        "question": "Can I integrate with my CRM?",
+        "answer": "Yes, StayOps.ai offers native integrations with Salesforce, HubSpot, Zoho, and other major CRMs. We also provide full API access for custom integrations."
+      },
+      {
+        "question": "Is there a free trial?",
+        "answer": "Yes, we offer a 14-day free trial on our Starter and Growth plans so you can test our AI agents in your environment before committing."
+      },
+      {
+        "question": "Is data secure?",
+        "answer": "Security is our top priority. We use SOC2 compliant infrastructure, end-to-end encryption, and role-based access control. Your proprietary data is never used to train public models."
+      },
+      {
+        "question": "Can businesses customize workflows?",
+        "answer": "Absolutely. Our platform features a drag-and-drop workflow builder that lets you customize exactly how the AI agents handle different scenarios and edge cases."
+      },
+      {
+        "question": "Do you provide onboarding support?",
+        "answer": "Yes, our Growth plan includes dedicated onboarding support, and our Enterprise plan includes a dedicated account manager and solutions architect."
+      },
+      {
+        "question": "Does it support voice AI calling?",
+        "answer": "Yes, our Growth and Enterprise plans include sophisticated voice AI capabilities that can handle both inbound customer service calls and outbound sales qualification."
+      }
+    ]
+  }
+}

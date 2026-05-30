@@ -1,78 +1,83 @@
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, Sparkles, MessageSquare, Mic, Video } from "lucide-react";
+import { ArrowRight, Sparkles, MessageSquare, Mic, Video, Bot, Users2, Activity, Database, MessageCircle, Key, Cloud, Cpu, ShieldCheck, BellRing, BarChart } from "lucide-react";
 import Link from "next/link";
 import { Particles } from "@/components/ui/Particles";
 
-const platforms = [
-  {
-    name: "Chat AI",
-    icon: MessageSquare,
-    color: "from-chat-500 to-chat-400",
-    glowColor: "group-hover:shadow-[0_0_40px_rgba(59,130,246,0.4)]",
-    url: "https://chat.stayops.ai",
-    description: "GPT/LLM conversations & support.",
-  },
-  {
-    name: "Voice AI",
-    icon: Mic,
-    color: "from-voice-500 to-voice-400",
-    glowColor: "group-hover:shadow-[0_0_40px_rgba(249,115,22,0.4)]",
-    url: "https://voice.stayops.ai",
-    description: "Real-time AI phone calls & reception.",
-  },
-  {
-    name: "Video AI",
-    icon: Video,
-    color: "from-video-500 to-video-400",
-    glowColor: "group-hover:shadow-[0_0_40px_rgba(139,92,246,0.4)]",
-    url: "https://video.stayops.ai",
-    description: "Lip-sync avatars & AI presenters.",
-  },
-];
+const iconMap: any = {
+  MessageSquare,
+  Mic,
+  Video,
+  Bot,
+  Users2,
+  Activity,
+  Database,
+  MessageCircle,
+  Key,
+  Cloud,
+  Cpu,
+  ShieldCheck,
+  BellRing,
+  BarChart
+};
 
-export function Hero() {
+export function Hero({ data }: { data: any }) {
+  if (!data) return null;
+
   return (
     <section className="relative min-h-screen flex items-center justify-center pt-24 pb-12 overflow-hidden">
       <Particles />
       
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+      {/* Banner Video Background */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <video 
+          autoPlay 
+          loop 
+          muted 
+          playsInline 
+          className="w-full h-full object-cover opacity-40 mix-blend-screen"
+        >
+          <source src="/banner.mp4" type="video/mp4" />
+        </video>
+        <div className="absolute inset-0 bg-gradient-to-b from-[#050505]/40 via-transparent to-[#050505] z-10" />
+      </div>
+      
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20 w-full">
         <div className="text-center max-w-4xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border-gold-500/30 text-gold-400 text-sm font-medium mb-8"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border border-white/10 mb-8"
           >
-            <Sparkles className="h-4 w-4" />
-            <span>The Unified Enterprise AI Ecosystem</span>
+            <Sparkles className="h-4 w-4 text-gold-500" />
+            <span className="text-sm font-medium text-slate-200">{data.badge}</span>
           </motion.div>
           
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-5xl md:text-7xl font-extrabold tracking-tight text-white mb-8 leading-tight"
+            className="text-5xl md:text-7xl font-bold tracking-tight text-white mb-6"
           >
-            One Platform. <br className="hidden md:block" />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold-300 to-gold-600">
-              Three Powerful AI Systems.
-            </span>
+            {data.titleLine1} <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold-500 to-gold-300">{data.titleLine2}</span>
           </motion.h1>
           
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-lg md:text-xl text-muted mb-16 max-w-2xl mx-auto"
+            className="text-xl md:text-2xl text-muted mb-12 max-w-3xl mx-auto"
           >
-            Deploy Chat AI, Voice AI, and Video AI agents from the StayOps.ai ecosystem to completely automate your business operations.
+            {data.subtitle}
           </motion.p>
 
           {/* Platform Cards */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-            {platforms.map((platform, index) => (
+            {data.platforms.map((platform: any, index: number) => {
+              const IconComponent = iconMap[platform.icon] || MessageSquare;
+              return (
               <motion.div
                 key={platform.name}
                 initial={{ opacity: 0, y: 40 }}
@@ -104,10 +109,10 @@ export function Hero() {
                         
                         <div className="relative z-10">
                           <div className="h-16 w-16 mx-auto rounded-2xl bg-[#111] flex items-center justify-center mb-6 border border-white/5 group-hover:scale-110 transition-transform duration-500 group-hover:border-white/20">
-                            <platform.icon className={`h-8 w-8 text-transparent bg-clip-text bg-gradient-to-br ${platform.color}`} style={{ color: "currentColor" }} />
+                            <IconComponent className={`h-8 w-8 text-transparent bg-clip-text bg-gradient-to-br ${platform.color}`} style={{ color: "currentColor" }} />
                             {/* Colored Icon absolute positioned */}
                             <div className={`absolute inset-0 flex items-center justify-center text-transparent bg-clip-text bg-gradient-to-br ${platform.color}`}>
-                              <platform.icon className="h-8 w-8 stroke-[url(#gradient)]" />
+                              <IconComponent className="h-8 w-8 stroke-[url(#gradient)]" />
                             </div>
                             <svg width="0" height="0">
                               <linearGradient id={`grad-${index}`} x1="0%" y1="0%" x2="100%" y2="100%">
@@ -129,7 +134,8 @@ export function Hero() {
                   </Link>
                 </motion.div>
               </motion.div>
-            ))}
+            );
+          })}
           </div>
         </div>
       </div>

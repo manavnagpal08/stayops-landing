@@ -3,23 +3,28 @@ import { Footer } from "@/components/layout/Footer";
 import { DynamicBanner } from "@/components/sections/DynamicBanner";
 import { Hero } from "@/components/sections/Hero";
 import { PlatformShowcase } from "@/components/sections/PlatformShowcase";
-import { UseCases } from "@/components/sections/UseCases";
 import { Features } from "@/components/sections/Features";
+import { UseCases } from "@/components/sections/UseCases";
 import { Pricing } from "@/components/sections/Pricing";
 import { FAQ } from "@/components/sections/FAQ";
 import { Contact } from "@/components/sections/Contact";
+import { getCmsData } from "@/lib/cms";
 
 export default function Home() {
+  const cmsData = getCmsData();
+
+  if (!cmsData) return null; // Fallback if data is missing
+
   return (
-    <main className="flex-1 flex flex-col relative w-full">
-      <Navbar />
+    <main className="min-h-screen bg-[#050505]">
       <DynamicBanner />
-      <Hero />
-      <PlatformShowcase />
-      <UseCases />
-      <Features />
-      <Pricing />
-      <FAQ />
+      <Navbar />
+      <Hero data={cmsData.hero} />
+      <PlatformShowcase data={cmsData.platforms} />
+      <Features data={cmsData.features} />
+      <UseCases data={cmsData.useCases} />
+      <Pricing data={cmsData.pricing} />
+      <FAQ data={cmsData.faq} />
       <Contact />
       <Footer />
     </main>

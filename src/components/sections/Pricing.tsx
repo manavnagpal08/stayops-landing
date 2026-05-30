@@ -6,91 +6,11 @@ import { Button } from "@/components/ui/Button";
 
 type PlatformType = "chat" | "voice" | "video";
 
-const pricingData = {
-  chat: {
-    accent: "chat",
-    plans: [
-      {
-        name: "Starter Chat",
-        description: "Perfect for small teams needing basic AI support.",
-        price: "$49",
-        features: ["1 AI Chatbot", "Up to 5,000 messages/mo", "Basic Knowledge Base", "Email Support"],
-        highlighted: false,
-      },
-      {
-        name: "Business Chat",
-        description: "Advanced GPT workflows for scaling businesses.",
-        price: "$149",
-        features: ["5 AI Chatbots", "Unlimited messages", "CRM Integrations", "Priority Support", "Custom Workflows"],
-        highlighted: true,
-      },
-      {
-        name: "Enterprise Chat",
-        description: "Dedicated infrastructure for large-scale deployments.",
-        price: "Custom",
-        features: ["Unlimited Chatbots", "Dedicated Account Manager", "On-premise deployment options", "SLA Guarantee"],
-        highlighted: false,
-      },
-    ]
-  },
-  voice: {
-    accent: "voice",
-    plans: [
-      {
-        name: "Voice Basic",
-        description: "Get started with simple inbound AI reception.",
-        price: "$99",
-        features: ["1 AI Receptionist", "500 minutes included", "$0.10 per extra minute", "Basic Voice Cloning"],
-        highlighted: false,
-      },
-      {
-        name: "Voice Pro",
-        description: "Outbound campaigns and advanced call analytics.",
-        price: "$299",
-        features: ["5 Concurrent Calls", "2,000 minutes included", "$0.08 per extra minute", "Premium Voice Cloning", "Call Analytics"],
-        highlighted: true,
-      },
-      {
-        name: "Voice Enterprise",
-        description: "High-volume call centers and complex integrations.",
-        price: "Custom",
-        features: ["Unlimited Concurrent Calls", "Custom Volume Pricing", "API Access", "Dedicated Infrastructure"],
-        highlighted: false,
-      },
-    ]
-  },
-  video: {
-    accent: "video",
-    plans: [
-      {
-        name: "Video Starter",
-        description: "Generate basic AI videos and presentations.",
-        price: "$199",
-        features: ["3 Standard Avatars", "60 minutes rendering/mo", "720p Export", "Basic Lip Sync"],
-        highlighted: false,
-      },
-      {
-        name: "Video Studio",
-        description: "Professional video generation with custom avatars.",
-        price: "$499",
-        features: ["Custom Avatar Generation", "300 minutes rendering/mo", "1080p Export", "Advanced Lip Sync processing", "Fast GPU Rendering"],
-        highlighted: true,
-      },
-      {
-        name: "Video Enterprise",
-        description: "Real-time interactive video agents and API.",
-        price: "Custom",
-        features: ["Interactive Streaming Avatars", "Dedicated GPU Cluster", "4K Export", "Real-time Latency <500ms"],
-        highlighted: false,
-      },
-    ]
-  }
-};
-
-export function Pricing() {
+export function Pricing({ data }: { data: any }) {
   const [activeTab, setActiveTab] = useState<PlatformType>("chat");
 
-  const currentData = pricingData[activeTab];
+  if (!data) return null;
+  const currentData = data[activeTab];
 
   return (
     <section id="pricing" className="py-24 relative bg-[#0a0a0a]">
@@ -148,7 +68,7 @@ export function Pricing() {
               transition={{ duration: 0.3 }}
               className="grid grid-cols-1 md:grid-cols-3 gap-8 absolute inset-0"
             >
-              {currentData.plans.map((plan, index) => (
+              {currentData.plans.map((plan: any, index: number) => (
                 <div 
                   key={index}
                   className={`relative rounded-3xl p-8 flex flex-col h-full ${
@@ -187,7 +107,7 @@ export function Pricing() {
                   <div className="space-y-4 flex-1">
                     <p className="text-sm font-semibold text-white">What&apos;s included:</p>
                     <ul className="space-y-3">
-                      {plan.features.map((feature, idx) => (
+                      {plan.features.map((feature: string, idx: number) => (
                         <li key={idx} className="flex items-start gap-3">
                           <Check className={`h-5 w-5 text-${currentData.accent}-500 shrink-0`} />
                           <span className="text-sm text-muted">{feature}</span>

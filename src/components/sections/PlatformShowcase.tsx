@@ -5,75 +5,17 @@ import { MessageSquare, Mic, Video, CheckCircle2, ArrowRight, LayoutGrid, Zap } 
 import { Button } from "@/components/ui/Button";
 import Link from "next/link";
 
-const platforms = [
-  {
-    id: "chat",
-    name: "Chat AI Platform",
-    url: "https://chat.stayops.ai",
-    urlDisplay: "chat.stayops.ai",
-    accent: "text-chat-400",
-    bgAccent: "bg-chat-500",
-    borderAccent: "border-chat-500/30",
-    glowAccent: "shadow-[0_0_80px_rgba(59,130,246,0.15)]",
-    ambientLight: "bg-chat-500/10",
-    icon: MessageSquare,
-    features: [
-      "AI Chatbot",
-      "GPT agents",
-      "CRM support",
-      "Knowledge AI",
-      "Customer support automation",
-      "Website embedding",
-    ],
-    cta: "Open Chat Platform",
-  },
-  {
-    id: "voice",
-    name: "Voice AI Platform",
-    url: "https://voice.stayops.ai",
-    urlDisplay: "voice.stayops.ai",
-    accent: "text-voice-400",
-    bgAccent: "bg-voice-500",
-    borderAccent: "border-voice-500/30",
-    glowAccent: "shadow-[0_0_80px_rgba(249,115,22,0.15)]",
-    ambientLight: "bg-voice-500/10",
-    icon: Mic,
-    features: [
-      "AI voice calls",
-      "Outbound calling",
-      "Speech recognition",
-      "AI receptionist",
-      "Voice analytics",
-      "Real-time conversations",
-    ],
-    cta: "Open Voice Platform",
-  },
-  {
-    id: "video",
-    name: "Video AI Platform",
-    url: "https://video.stayops.ai",
-    urlDisplay: "video.stayops.ai",
-    accent: "text-video-400",
-    bgAccent: "bg-video-500",
-    borderAccent: "border-video-500/30",
-    glowAccent: "shadow-[0_0_80px_rgba(139,92,246,0.15)]",
-    ambientLight: "bg-video-500/10",
-    icon: Video,
-    features: [
-      "AI avatars",
-      "Video rendering",
-      "Lip sync AI",
-      "Video agents",
-      "Human-like presenters",
-      "Interactive AI video",
-    ],
-    cta: "Open Video Platform",
-  },
-];
+const iconMap: Record<string, React.ElementType> = {
+  chat: MessageSquare,
+  voice: Mic,
+  video: Video,
+};
 
-export function PlatformShowcase() {
+export function PlatformShowcase({ data }: { data: any }) {
+  if (!data) return null;
+
   return (
-    <section className="py-32 relative bg-[#020202] overflow-hidden">
+    <section id="platforms" className="py-32 relative bg-[#020202] overflow-hidden">
       {/* Background Decorative Elements */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full pointer-events-none opacity-40">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-chat-500/10 blur-[150px] rounded-full mix-blend-screen" />
@@ -90,7 +32,7 @@ export function PlatformShowcase() {
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border-white/10 text-white text-sm font-medium mb-6 backdrop-blur-md"
           >
             <LayoutGrid className="h-4 w-4" />
-            <span>Multi-Product Architecture</span>
+            <span>{data.label}</span>
           </motion.div>
           
           <motion.h2 
@@ -100,7 +42,7 @@ export function PlatformShowcase() {
             transition={{ delay: 0.1 }}
             className="text-4xl md:text-6xl font-extrabold text-white mb-6 tracking-tight"
           >
-            Explore the Ecosystem
+            {data.title}
           </motion.h2>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
@@ -109,13 +51,15 @@ export function PlatformShowcase() {
             transition={{ delay: 0.2 }}
             className="text-lg md:text-xl text-muted/80 leading-relaxed"
           >
-            Three independent, high-performance AI platforms, built from the ground up to automate every aspect of your enterprise.
+            {data.subtitle}
           </motion.p>
         </div>
 
         <div className="space-y-32">
-          {platforms.map((platform, index) => (
-            <motion.div
+          {data.items.map((platform: any, index: number) => {
+            const IconComponent = iconMap[platform.id] || MessageSquare;
+            return (
+            <motion.div 
               key={platform.id}
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -128,9 +72,9 @@ export function PlatformShowcase() {
               {/* Text Content */}
               <div className="flex-1 space-y-8 w-full">
                 <div className="flex items-center gap-4">
-                  <div className={`p-4 rounded-2xl bg-[#0a0a0a] border ${platform.borderAccent} shadow-xl relative overflow-hidden`}>
-                    <div className={`absolute inset-0 ${platform.ambientLight} opacity-50`} />
-                    <platform.icon className={`h-8 w-8 ${platform.accent} relative z-10`} />
+                  <div className={`p-4 rounded-2xl bg-[#0a0a0a] border border-white/10 shadow-xl relative overflow-hidden`}>
+                    <div className={`absolute inset-0 bg-white/5 opacity-50`} />
+                    <IconComponent className={`h-8 w-8 ${platform.accent} relative z-10`} />
                   </div>
                   <div className="text-sm font-mono text-white/50 tracking-widest uppercase bg-white/5 px-3 py-1.5 rounded-lg border border-white/5">
                     {platform.urlDisplay}
@@ -143,7 +87,7 @@ export function PlatformShowcase() {
                 </div>
 
                 <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-5">
-                  {platform.features.map((feature, idx) => (
+                  {platform.features.map((feature: string, idx: number) => (
                     <li key={idx} className="flex items-center gap-3 text-muted/90 text-lg">
                       <CheckCircle2 className={`h-5 w-5 ${platform.accent} shrink-0`} />
                       <span>{feature}</span>
@@ -213,7 +157,8 @@ export function PlatformShowcase() {
                 </motion.div>
               </motion.div>
             </motion.div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

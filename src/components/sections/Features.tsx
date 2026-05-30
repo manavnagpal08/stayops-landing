@@ -2,36 +2,18 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { 
-  Bot, 
-  MessageSquare, 
-  BarChart, 
-  Users2, 
-  Activity, 
-  Database, 
-  MessageCircle, 
-  Key, 
-  Cloud, 
-  Cpu, 
-  ShieldCheck, 
-  BellRing
+  Bot, MessageSquare, BarChart, Users2, Activity, Database, MessageCircle, 
+  Key, Cloud, Cpu, ShieldCheck, BellRing
 } from "lucide-react";
 
-const features = [
-  { title: "AI Workflow Automation", icon: Bot },
-  { title: "Voice AI Agents", icon: MessageSquare },
-  { title: "Smart Analytics", icon: BarChart },
-  { title: "Multi-user Dashboard", icon: Users2 },
-  { title: "Real-time Monitoring", icon: Activity },
-  { title: "CRM Integrations", icon: Database },
-  { title: "WhatsApp Automation", icon: MessageCircle },
-  { title: "API Access", icon: Key },
-  { title: "Secure Cloud Hosting", icon: Cloud },
-  { title: "Custom AI Agents", icon: Cpu },
-  { title: "Role-based Access", icon: ShieldCheck },
-  { title: "Notifications & Alerts", icon: BellRing },
-];
+const iconMap: Record<string, React.ElementType> = {
+  Bot, MessageSquare, BarChart, Users2, Activity, Database, MessageCircle, 
+  Key, Cloud, Cpu, ShieldCheck, BellRing
+};
 
-export function Features() {
+export function Features({ data }: { data: any }) {
+  if (!data) return null;
+
   return (
     <section id="features" className="py-24 relative bg-[#050505]">
       {/* Background decoration */}
@@ -46,15 +28,17 @@ export function Features() {
           className="text-center max-w-3xl mx-auto mb-20"
         >
           <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
-            Enterprise-Grade Features
+            {data.title}
           </h2>
           <p className="text-lg text-muted">
-            Everything you need to build, deploy, and manage a secure AI workforce at scale.
+            {data.subtitle}
           </p>
         </motion.div>
 
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
-          {features.map((feature, index) => (
+          {data.items.map((feature: any, index: number) => {
+            const IconComponent = iconMap[feature.icon] || Bot;
+            return (
             <motion.div
               key={index}
               initial={{ opacity: 0, scale: 0.95 }}
@@ -65,13 +49,14 @@ export function Features() {
               className="glass p-6 rounded-2xl border border-white/5 flex flex-col items-center justify-center text-center gap-4 hover:border-gold-500/30 hover:bg-white/5 hover:shadow-[0_0_30px_rgba(234,179,8,0.1)] transition-all group cursor-pointer"
             >
               <div className="p-3 rounded-xl bg-[#111] group-hover:bg-gold-500/10 transition-colors border border-white/5 group-hover:border-gold-500/20 group-hover:scale-110 duration-300">
-                <feature.icon className="h-6 w-6 text-gold-500" />
+                <IconComponent className="h-6 w-6 text-gold-500" />
               </div>
               <h3 className="text-white font-medium text-sm md:text-base group-hover:text-gold-400 transition-colors">
                 {feature.title}
               </h3>
             </motion.div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>
