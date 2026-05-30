@@ -45,7 +45,7 @@ export function Hero({ data }: { data: any }) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-5xl md:text-7xl font-bold tracking-tight text-white mb-6"
+            className="text-4xl sm:text-5xl md:text-7xl font-bold tracking-tight text-white mb-6"
           >
             {data.titleLine1} <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold-500 to-gold-300">{data.titleLine2}</span>
           </motion.h1>
@@ -54,7 +54,7 @@ export function Hero({ data }: { data: any }) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-xl md:text-2xl text-muted mb-12 max-w-3xl mx-auto"
+            className="text-lg sm:text-xl md:text-2xl text-muted mb-12 max-w-3xl mx-auto"
           >
             {data.subtitle}
           </motion.p>

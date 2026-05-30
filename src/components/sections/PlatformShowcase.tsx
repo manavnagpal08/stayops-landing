@@ -82,7 +82,7 @@ export function PlatformShowcase({ data }: { data: any }) {
                 </div>
                 
                 <div>
-                  <h3 className="text-4xl lg:text-5xl font-bold text-white mb-4 tracking-tight">{platform.name}</h3>
+                  <h3 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4 tracking-tight">{platform.name}</h3>
                   <div className="h-1 w-24 rounded-full bg-gradient-to-r from-transparent via-transparent to-transparent" style={{ backgroundImage: `linear-gradient(to right, var(--color-${platform.id}-500), transparent)` }} />
                 </div>
 

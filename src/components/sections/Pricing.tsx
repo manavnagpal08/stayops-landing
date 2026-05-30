@@ -24,10 +24,10 @@ export function Pricing({ data }: { data: any }) {
           </p>
           
           {/* Tabs */}
-          <div className="inline-flex items-center p-1 bg-[#111] rounded-xl border border-white/10 mb-8">
+          <div className="flex flex-wrap justify-center items-center p-1 bg-[#111] rounded-xl border border-white/10 mb-8 gap-1">
             <button
               onClick={() => setActiveTab("chat")}
-              className={`flex items-center gap-2 px-6 py-3 rounded-lg text-sm font-medium transition-all ${
+              className={`flex items-center justify-center gap-2 px-6 py-3 rounded-lg text-sm font-medium transition-all flex-1 min-w-[120px] ${
                 activeTab === "chat" 
                   ? "bg-chat-500/20 text-chat-400 shadow-[0_0_20px_rgba(59,130,246,0.2)]" 
                   : "text-muted hover:text-white"
@@ -37,7 +37,7 @@ export function Pricing({ data }: { data: any }) {
             </button>
             <button
               onClick={() => setActiveTab("voice")}
-              className={`flex items-center gap-2 px-6 py-3 rounded-lg text-sm font-medium transition-all ${
+              className={`flex items-center justify-center gap-2 px-6 py-3 rounded-lg text-sm font-medium transition-all flex-1 min-w-[120px] ${
                 activeTab === "voice" 
                   ? "bg-voice-500/20 text-voice-400 shadow-[0_0_20px_rgba(249,115,22,0.2)]" 
                   : "text-muted hover:text-white"
@@ -47,7 +47,7 @@ export function Pricing({ data }: { data: any }) {
             </button>
             <button
               onClick={() => setActiveTab("video")}
-              className={`flex items-center gap-2 px-6 py-3 rounded-lg text-sm font-medium transition-all ${
+              className={`flex items-center justify-center gap-2 px-6 py-3 rounded-lg text-sm font-medium transition-all flex-1 min-w-[120px] ${
                 activeTab === "video" 
                   ? "bg-video-500/20 text-video-400 shadow-[0_0_20px_rgba(139,92,246,0.2)]" 
                   : "text-muted hover:text-white"
@@ -58,7 +58,7 @@ export function Pricing({ data }: { data: any }) {
           </div>
         </div>
 
-        <div className="max-w-6xl mx-auto relative min-h-[600px]">
+        <div className="max-w-6xl mx-auto relative">
           <AnimatePresence mode="wait">
             <motion.div
               key={activeTab}
@@ -66,7 +66,7 @@ export function Pricing({ data }: { data: any }) {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.3 }}
-              className="grid grid-cols-1 md:grid-cols-3 gap-8 absolute inset-0"
+              className="grid grid-cols-1 md:grid-cols-3 gap-8"
             >
               {currentData.plans.map((plan: any, index: number) => (
                 <div 
