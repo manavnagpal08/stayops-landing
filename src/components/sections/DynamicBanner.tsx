@@ -55,10 +55,19 @@ export function DynamicBanner({ initialData }: { initialData?: BannerData }) {
           {banner.type === "video" ? (
             <>
               <video
+                ref={(el) => {
+                  if (el) {
+                    el.defaultMuted = isMuted;
+                    el.muted = isMuted;
+                    // Attempt to play if it's paused
+                    if (el.paused) {
+                      el.play().catch(() => {});
+                    }
+                  }
+                }}
                 src={banner.url}
                 autoPlay
                 loop
-                muted={isMuted}
                 playsInline
                 preload="auto"
                 className="absolute inset-0 w-full h-full object-cover"
