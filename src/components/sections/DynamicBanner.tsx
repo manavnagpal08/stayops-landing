@@ -44,7 +44,11 @@ export function DynamicBanner() {
         animate={{ opacity: 1, height: "auto" }}
         className="w-full relative overflow-hidden"
       >
-        <div className="relative w-full h-[300px] md:h-[450px] lg:h-[600px] group">
+        <div 
+          className="relative w-full h-[300px] md:h-[450px] lg:h-[600px] group"
+          onMouseEnter={() => setIsMuted(false)}
+          onMouseLeave={() => setIsMuted(true)}
+        >
           {/* Background Media */}
           {banner.type === "video" ? (
             <>
