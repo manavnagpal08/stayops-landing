@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Volume2, VolumeX } from "lucide-react";
 
 type BannerData = {
   type: "video" | "photo";
@@ -12,6 +13,7 @@ type BannerData = {
 export function DynamicBanner() {
   const [banner, setBanner] = useState<BannerData | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [isMuted, setIsMuted] = useState(true);
 
   useEffect(() => {
     // Fetch initial banner state
@@ -42,17 +44,25 @@ export function DynamicBanner() {
         animate={{ opacity: 1, height: "auto" }}
         className="w-full relative overflow-hidden"
       >
-        <div className="relative w-full h-[300px] md:h-[450px] lg:h-[600px]">
+        <div className="relative w-full h-[300px] md:h-[450px] lg:h-[600px] group">
           {/* Background Media */}
           {banner.type === "video" ? (
-            <video
-              src={banner.url}
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="absolute inset-0 w-full h-full object-cover"
-            />
+            <>
+              <video
+                src={banner.url}
+                autoPlay
+                loop
+                muted={isMuted}
+                playsInline
+                className="absolute inset-0 w-full h-full object-cover"
+              />
+              <button
+                onClick={() => setIsMuted(!isMuted)}
+                className="absolute bottom-6 right-6 z-50 glass p-3 rounded-full border border-white/10 text-white hover:bg-white/10 transition-colors opacity-0 group-hover:opacity-100"
+              >
+                {isMuted ? <VolumeX className="w-5 h-5" /> : <Volume2 className="w-5 h-5" />}
+              </button>
+            </>
           ) : (
             <div
               className="absolute inset-0 w-full h-full bg-cover bg-center"
