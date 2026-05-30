@@ -11,3 +11,14 @@ export function getCmsData() {
     return null;
   }
 }
+
+export function getBannerData() {
+  const filePath = path.join(process.cwd(), 'src/lib/banner.json');
+  try {
+    const data = fs.readFileSync(filePath, 'utf8');
+    return JSON.parse(data);
+  } catch (e) {
+    console.error("Failed to load banner data", e);
+    return null;
+  }
+}

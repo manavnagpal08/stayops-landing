@@ -10,12 +10,14 @@ type BannerData = {
   subtitle: string;
 };
 
-export function DynamicBanner() {
-  const [banner, setBanner] = useState<BannerData | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
+export function DynamicBanner({ initialData }: { initialData?: BannerData }) {
+  const [banner, setBanner] = useState<BannerData | null>(initialData || null);
+  const [isLoading, setIsLoading] = useState(!initialData);
   const [isMuted, setIsMuted] = useState(true);
 
   useEffect(() => {
+    if (initialData) return; // Skip fetch if we have initial data (production)
+
     // Fetch initial banner state
     fetch("/api/banner", { cache: 'no-store' })
       .then((res) => res.json())
@@ -33,7 +35,7 @@ export function DynamicBanner() {
     }, 3000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [initialData]);
 
   if (isLoading || !banner || !banner.url) return null; // Don't show if empty or loading
 
@@ -58,6 +60,7 @@ export function DynamicBanner() {
                 loop
                 muted={isMuted}
                 playsInline
+                preload="auto"
                 className="absolute inset-0 w-full h-full object-cover"
               />
               <button
