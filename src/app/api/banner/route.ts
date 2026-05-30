@@ -2,6 +2,8 @@ import { NextResponse } from 'next/server';
 import fs from 'fs';
 import path from 'path';
 
+export const dynamic = 'force-dynamic';
+
 const bannerFilePath = path.join(process.cwd(), 'src/lib/banner.json');
 
 export async function GET() {

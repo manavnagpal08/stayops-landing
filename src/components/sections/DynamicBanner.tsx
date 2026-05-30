@@ -15,7 +15,7 @@ export function DynamicBanner() {
 
   useEffect(() => {
     // Fetch initial banner state
-    fetch("/api/banner")
+    fetch("/api/banner", { cache: 'no-store' })
       .then((res) => res.json())
       .then((data) => {
         setBanner(data);
