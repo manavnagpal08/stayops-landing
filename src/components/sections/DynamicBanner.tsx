@@ -66,23 +66,27 @@ export function DynamicBanner() {
           <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:4px_4px] opacity-30" />
 
           {/* Content */}
-          <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-6">
-            <motion.div
-              initial={{ y: 20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.2, duration: 0.7 }}
-              className="glass px-8 py-6 rounded-2xl border border-white/10 backdrop-blur-md max-w-3xl"
-            >
-              <h1 className="text-3xl md:text-5xl font-extrabold text-white mb-4 tracking-tight drop-shadow-xl">
-                {banner.title}
-              </h1>
-              {banner.subtitle && (
-                <p className="text-lg md:text-xl text-gold-300 drop-shadow-md">
-                  {banner.subtitle}
-                </p>
-              )}
-            </motion.div>
-          </div>
+          {(banner.title || banner.subtitle) && (
+            <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-6 pointer-events-none">
+              <motion.div
+                initial={{ y: 20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ delay: 0.2, duration: 0.7 }}
+                className="glass px-8 py-6 rounded-2xl border border-white/10 backdrop-blur-md max-w-3xl"
+              >
+                {banner.title && (
+                  <h1 className="text-3xl md:text-5xl font-extrabold text-white mb-4 tracking-tight drop-shadow-xl">
+                    {banner.title}
+                  </h1>
+                )}
+                {banner.subtitle && (
+                  <p className="text-lg md:text-xl text-gold-300 drop-shadow-md">
+                    {banner.subtitle}
+                  </p>
+                )}
+              </motion.div>
+            </div>
+          )}
         </div>
       </motion.div>
     </AnimatePresence>
